@@ -1,0 +1,166 @@
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* header & navbar container */
+header {
+    top:0;
+    width: 100vw;
+    position: fixed;
+    background-color:white;
+    padding-bottom: 2em;
+}
+
+#logo {
+    padding:0.5em;
+    text-align: center;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.button {
+    height: 125px;
+    width: 125px;
+    padding: 15px;
+    margin: 25px;
+    border: 10px solid whitesmoke;
+    border-radius: 30px;
+    background-color:whitesmoke;
+    flex-direction: column;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.button:hover {
+    border-color:lightblue;
+    background-color:lightblue;
+    
+}
+
+.buttonA {
+    height: 125px;
+    width: 125px;
+    padding: 15px;
+    margin: 25px;
+    border: 10px solid;
+    border-radius: 30px;
+    flex-direction: column;
+    font-size:30px;
+    font-weight:bold;
+    border-color:lightblue;
+    background-color:lightblue;
+}
+
+#navB {
+    margin-top: 40px;
+    margin-left: -10px;
+}
+
+#navA {
+    margin-top: 40px;
+    margin-left: -11px;
+}
+
+#navE {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+#navD {
+    margin-top: 40px;
+    margin-left: 0px;
+}
+
+/* popular page */
+h1 {
+    font-size: 60px;
+    margin-top: 400px;
+    margin-left: 65px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    overflow-y: scroll;
+    z-index:-10;
+}
+
+#pop1 {
+    margin:10px;
+    width:42vw;
+    height: 42vh;
+    background-color:lightcyan;
+    border-radius:30px;
+}
+
+#pop2 {
+    margin:10px;
+    width:42vw;
+    height: 42vh;
+    background-color:lightblue;
+    border-radius:30px;
+} 
+
+#pop3 {
+    margin:10px;
+    width:42vw;
+    height: 42vh;
+    background-color:lightskyblue;
+    border-radius:30px;
+}
+
+#pop4 {
+    margin:10px;
+    width:42vw;
+    height: 42vh;
+    background-color:lightseagreen;
+    border-radius:30px;
+} 
+
+/* beverages page */
+#selScroll {
+    background-color:green;
+    margin-left: 65px;
+    width: 30vw;
+    display:flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.selBox {
+    background-color:gray;
+    height:300px;
+    width:300px;
+    margin:100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius:20px;
+}
+
+/* footer container */
+footer {
+    width:100vw;
+    height:8vh;
+    position: fixed;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    color:white;
+    background-color: #273d4b;
+    border-radius:  30px 30px 0px 0px;
+}
+
