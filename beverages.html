@@ -8,24 +8,35 @@
 
     <body>
         <header>
+            <div id="backArrow">
+                <a href="index.html"><img src="images/backArrow.png" width=15%></a>
+            </div>
             <div id="logo">
-                <a href="index.html"><img src="logo.jpg" width=30%></a>
+                <a href="index.html"><img src="images/logo.jpg" width=30%></a>
             </div>
             <nav>
-                <div class="buttonA"><a href="beverages.html"><img src="iconBeverages.png" width=100%></a><p id="navB">Beverages</p></div>
-                <div class="button"><a href="appetizer.html"><img src="iconAppetizer.png" width=100%></a><p id="navA">Appetizers</p></div>
-                <div class="button"><a href="entree.html"><img src="iconEntree.png" width=100%></a><p id="navE">Entrées</p></div>
-                <div class="button"><a href="dessert.html"><img src="iconDessert.png" width=100%></a><p id="navD">Desserts</p></div>
+                <div class="buttonA"><a href="beverages.html"><img src="images/iconBeverages.png" width=100%></a><p id="navB">Beverages</p></div>
+                <div class="button"><a href="appetizer.html"><img src="images/iconAppetizer.png" width=100%></a><p id="navA">Appetizers</p></div>
+                <div class="button"><a href="entree.html"><img src="images/iconEntree.png" width=100%></a><p id="navE">Entrées</p></div>
+                <div class="button"><a href="dessert.html"><img src="images/iconDessert.png" width=100%></a><p id="navD">Desserts</p></div>
             </nav>
         </header> 
         
-        <h1>Beverages</h1>
-        <div id="selScroll">
-            <div class="selBox"><img src="sprite.jpg"></div>
-            <div class="selBox"><img src="coke.jpg"></div>
-            <!--<div class="selBox"><img src="fanta.jpg"></div>-->
-        </div>
-        <div id="itemInfo"></div>
+        <main id= "beverages">
+            <h1>Beverages</h1>
+            <div id="selScroll">
+                <div class="selBox"><img src="images/sprite.jpg"></div>
+                <div class="selBox"><img src="images/coke.jpg"></div>
+                <div class="selBox"><img src="images/fanta.jpg"></div>
+            </div>
+            <div id="itemBox">
+                <div id="itemPic"><img src="images/sprite.jpg"></div>
+                <p id="itemName">Sprite</p>
+                <p id="itemPrice">$3.00</p>
+                <p id="itemDesc">Lemon-lime thirst quencher</p>
+                <div id="minusBut">-</div><p id="itemAmount">0</p><div id="plusBut">+</div>
+            </div>
+        </main>
 
         <footer>
             Cart
