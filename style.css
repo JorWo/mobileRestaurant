@@ -144,8 +144,7 @@ h1 {
 .selBox {
     overflow: hidden;
     display: flex;
-    object-fit: center;
-    justify-self: flex-start;
+    flex: 0 0 auto;
     background-color:white;
     height:300px;
     width:300px;
