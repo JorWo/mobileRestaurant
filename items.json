@@ -1,0 +1,45 @@
+{
+    "beverages":[
+        {
+            "name":"Sprite",
+            "price":3.00,
+            "desc":"Lemon-lime thirst quencher",
+            "image":"images/sprite.jpg"
+        },
+        {
+            "name":"Coca-Cola",
+            "price":3.00,
+            "desc":"Cocaine filled soda",
+            "image":"images/coke.jpg"
+        },
+        {
+            "name":"Mountain Dew",
+            "price":3.00,
+            "desc":"Gamer soda",
+            "image":"images/mountaindew.jpg"
+        },
+        {
+            "name":"Orange Fanta",
+            "price":3.00,
+            "desc":"Orange juice on crack",
+            "image":"images/fanta.jpg"
+        },
+        {
+            "name":"Ramune",
+            "price":3.00,
+            "desc":"Blue soda",
+            "image":"images/ramune.jpg"
+        }
+    ],
+    "appetizers":[
+        {
+            "name":"bread"
+        }
+    ],
+    "entrees":[
+
+    ],
+    "desserts":[
+
+    ]
+}

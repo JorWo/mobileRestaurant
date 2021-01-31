@@ -136,6 +136,7 @@ h1 {
 /* beverages page */
 #selScroll {
     margin-left: 55px;
+    padding-bottom: 200px;
     width: 350px;
     overflow-y: scroll;
 }
@@ -148,7 +149,6 @@ h1 {
     margin: 20px;
     border: 1px solid white;
     border-radius:20px;
-    object-fit: scale-down;
     display: flex;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -159,7 +159,7 @@ h1 {
 }
 
 #itemBox {
-    margin-top:-100%;
+    top:30%;
     margin-left:40%;
     height:70vh;
     width:530px;
@@ -174,7 +174,7 @@ h1 {
     overflow: hidden;
     height: 500px;
     width: 500px;
-    object-fit: scale-down;
+    object-fit: cover;
 }
 
 #itemName {
