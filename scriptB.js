@@ -6,14 +6,24 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
+        window.addItemAmount = function addItemAmount(x) {
+            bevAmount[x]++;
+            document.getElementById("itemAmount").innerHTML = bevAmount[x];
+        }
+        window.minusItemAmount = function minusItemAmount(x) {
+            bevAmount[x]--;
+            document.getElementById("itemAmount").innerHTML = bevAmount[x];
+        }
+
         document.getElementById("itemPic").src = mydata.beverages[x].image;
         document.getElementById("itemName").innerHTML = mydata.beverages[x].name;
         document.getElementById("itemPrice").innerHTML = "$"+(mydata.beverages[x].price).toFixed(2);
         document.getElementById("itemDesc").innerHTML = mydata.beverages[x].desc;
         document.getElementById("itemAmount").innerHTML = bevAmount[x];
-        for (i=0; i<2;i++) {
-        document.getElementsByClassName("addToCartBut")[i].style.visibility = "visible";
-        }
+        document.getElementById("minusToCartBut").style.visibility = "visible";
+        document.getElementById("addToCartBut").style.visibility = "visible";
+        document.getElementById("addToCartBut").setAttribute("onclick","addItemAmount("+x+")");
+        document.getElementById("minusToCartBut").setAttribute("onclick","minusItemAmount("+x+")");
     }
 
     for (i=0;i<Object.keys(mydata.beverages).length;i++) {

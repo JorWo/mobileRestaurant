@@ -204,7 +204,7 @@ h1 {
     font-size: 80px;
 }
 
-.addToCartBut {
+#addToCartBut, #minusToCartBut {
     visibility: hidden;
     display: flex;
     justify-content: center;
@@ -219,11 +219,11 @@ h1 {
     box-shadow: 0 9px #999;
 }
 
-.addToCartBut:hover {
+#addToCartBut:hover, #minusToCartBut:hover {
     background-color:gray;
 }
 
-.addToCartBut:active {
+#addToCartBut:active, #minusToCartBut:active {
     background-color:gray;
     box-shadow: 0 5px #666;
     transform:translate(0,4px);
