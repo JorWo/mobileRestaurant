@@ -143,14 +143,14 @@ h1 {
 
 .selBox {
     overflow: hidden;
+    display: flex;
+    justify-content: center;
     background-color:white;
     height:300px;
     width:300px;
     margin: 20px;
     border: 1px solid white;
     border-radius:20px;
-    display: -webkit-flex;
-    display: flex;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
