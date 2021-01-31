@@ -149,6 +149,7 @@ h1 {
     margin: 20px;
     border: 1px solid white;
     border-radius:20px;
+    display: -webkit-box;
     display: flex;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -193,6 +194,39 @@ h1 {
     font-size: 60px;
     margin-top:-40px;
     text-align: center;
+}
+
+#addToCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-125px;
+    font-size: 80px;
+}
+
+.addToCartBut {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100px;
+    height:100px;
+    margin:20px;
+    color:#273d4b; 
+    border: 1px solid lightgray;
+    border-radius:300px;
+    background-color:whitesmoke;
+    box-shadow: 0 9px #999;
+}
+
+.addToCartBut:hover {
+    background-color:gray;
+}
+
+.addToCartBut:active {
+    background-color:gray;
+    box-shadow: 0 5px #666;
+    transform:translate(0,4px);
 }
 
 /* footer container */
