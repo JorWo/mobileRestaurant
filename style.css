@@ -145,6 +145,7 @@ h1 {
     overflow: hidden;
     display: flex;
     flex: 0 0 auto;
+    justify-content: center;
     background-color:white;
     height:300px;
     width:300px;
