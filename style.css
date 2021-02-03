@@ -138,8 +138,6 @@ h1 {
     margin-left: 55px;
     padding-bottom: 200px;
     width: 350px;
-    display: flex;
-    flex-direction: column;
     overflow-y: scroll;
     align-items: center;
 }
@@ -147,11 +145,12 @@ h1 {
 .selBox {
     overflow: hidden;
     display: flex;
-    object-fit: cover;
+    justify-content: center;
+    align-items:center;
     background-color:white;
     height:300px;
     width:300px;
-    margin: 10px;
+    margin: 20px;
     border: 1px solid white;
     border-radius:20px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -174,7 +173,6 @@ h1 {
 }
 
 #itemPic {
-    display: flex;
     overflow: hidden;
     height: 500px;
     width: 500px;
