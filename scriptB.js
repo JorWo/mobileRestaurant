@@ -11,8 +11,10 @@ if (this.readyState == 4 && this.status == 200) {
             document.getElementById("itemAmount").innerHTML = bevAmount[x];
         }
         window.minusItemAmount = function minusItemAmount(x) {
+            if (bevAmount[x] !== 0) {
             bevAmount[x]--;
             document.getElementById("itemAmount").innerHTML = bevAmount[x];
+            }
         }
 
         document.getElementById("itemPic").src = mydata.beverages[x].image;
@@ -38,7 +40,9 @@ if (this.readyState == 4 && this.status == 200) {
         var objTo2 = document.getElementsByClassName("selBox")[i];
         var itemImage = document.createElement("img")
         itemImage.src = mydata.beverages[i].image;
+        itemImage.setAttribute("width","100%");
         objTo2.appendChild(itemImage);
+
     }    
     }
 }
