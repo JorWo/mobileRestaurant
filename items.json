@@ -33,7 +33,22 @@
     ],
     "appetizers":[
         {
-            "name":"bread"
+            "name":"Bowl of Rice",
+            "price":1.00,
+            "desc":"White rice",
+            "image":"images/rice.jpg"
+        },
+        {
+            "name":"Fried Rice",
+            "price":1.50,
+            "desc":"Egg fried rice",
+            "image":"images/friedRice.jpg"
+        },
+        {
+            "name":"Spam Musubi",
+            "price":3.50,
+            "desc":"Four spam musubis",
+            "image":"images/spamMusubi.jpg"
         }
     ],
     "entrees":[
