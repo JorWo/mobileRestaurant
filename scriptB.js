@@ -15,6 +15,9 @@ if (this.readyState == 4 && this.status == 200) {
             bevAmount[x]--;
             document.getElementById("itemAmount").innerHTML = bevAmount[x];
             }
+        window.addItemToCart = function addItemToCart(x) {
+            
+        }
         }
 
         document.getElementById("itemPic").src = mydata.beverages[x].image;
@@ -24,8 +27,10 @@ if (this.readyState == 4 && this.status == 200) {
         document.getElementById("itemAmount").innerHTML = bevAmount[x];
         document.getElementById("minusToCartBut").style.visibility = "visible";
         document.getElementById("addToCartBut").style.visibility = "visible";
+        document.getElementById("addToCartButton").style.visibility = "visible";
         document.getElementById("addToCartBut").setAttribute("onclick","addItemAmount("+x+")");
         document.getElementById("minusToCartBut").setAttribute("onclick","minusItemAmount("+x+")");
+        document.getElementById("addToCartButton").setAttribute("onclick","addItemToCart("+x+")");
     }
 
     for (i=0;i<Object.keys(mydata.beverages).length;i++) {

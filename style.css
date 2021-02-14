@@ -42,7 +42,6 @@ header {
 }
 
 nav {
-    position: relative;
     display: flex;
     justify-content: center;
     background-color: white;
@@ -177,7 +176,7 @@ h1 {
 
 #itemBox {
     top:30%;
-    margin-left:40%;
+    margin-left:42.5%;
     height:70vh;
     width:530px;
     display: flex;
@@ -187,7 +186,6 @@ h1 {
 }
 
 #itemPic {
-    overflow: hidden;
     height: 500px;
     width: 500px;
     object-fit: cover;
@@ -217,6 +215,7 @@ h1 {
     align-items: center;
     margin-top:-125px;
     font-size: 80px;
+    flex-wrap: wrap;
 }
 
 #addToCartBut, #minusToCartBut {
@@ -242,6 +241,21 @@ h1 {
     background-color:gray;
     box-shadow: 0 5px #666;
     transform:translate(0,4px);
+}
+
+#addToCartButton {
+    font-size: 50px;
+    width: 50vw;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-30px;
+    visibility: hidden;
+    border: 10px solid #273d4b;
+    background-color: #273d4b;
+    border-radius:90px;
+    color: white;
 }
 
 /* footer container */
@@ -293,7 +307,6 @@ hr  {
 #cartTotal {
     font-size: 60px;
     margin-right: 65px;
-    
 }
 
 #makeOrderButton {
