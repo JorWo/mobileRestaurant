@@ -233,10 +233,6 @@ h1 {
     box-shadow: 0 9px #999;
 }
 
-#addToCartBut:hover, #minusToCartBut:hover {
-    background-color:gray;
-}
-
 #addToCartBut:active, #minusToCartBut:active {
     background-color:gray;
     box-shadow: 0 5px #666;
@@ -287,12 +283,15 @@ footer {
 }
 
 #totalBox {
+    background-color:white;
     position: fixed;
     bottom: 0;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    z-index: 5;
+    padding-top:10px;
 }
 
 hr  {
@@ -323,4 +322,90 @@ hr  {
     width: 90vw;
     height:140px;
     margin-bottom: 45px;
+}
+
+.cartItems {
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    margin-left:65px;
+    
+}
+
+.cartItemBox {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cartItemPic {
+    margin-left: 65px;
+    width: 200px;
+    height: 200px;
+    object-fit:cover;
+    border: 10px solid whitesmoke;
+    border-radius: 30px;
+    background-color:whitesmoke;
+}
+
+#cartItemNameAndPrice {
+    display:flex;
+    flex-direction:column;
+    
+}
+.cartItemName {
+    margin-top: 10px;
+    margin-left:-50px;
+    font-size: 60px;    
+}
+
+.cartItemPrice {
+    margin-top: -10px;
+    margin-left:-50px;
+    font-size:50px;
+    color:#273d4b;
+}
+
+.cartQtyCont {
+    width:300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    font-size: 60px;
+    margin-right:65px;
+}
+
+.cartQty {
+    margin-top:10px;
+    margin-left: auto;
+}
+
+.cartAdd, .cartMinus {
+    display: flex;
+    justify-content: center;
+    width:80px;
+    height:80px;
+    margin-top:10px;
+    margin-bottom:auto;
+    margin-left: auto;
+    color:#273d4b; 
+    border: 1px solid lightgray;
+    border-radius:300px;
+    background-color:whitesmoke;
+    box-shadow: 0 9px #999;
+    
+}
+
+.cartAdd:active, .cartMinus:active {
+    background-color:gray;
+    box-shadow: 0 5px #666;
+    transform:translate(0,4px);
+}
+
+.itemTotalPrice {
+    font-size: 50px;
+    margin-top: -10px;
+    margin-left: auto;
 }

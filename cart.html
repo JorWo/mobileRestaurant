@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-        <script src="scriptB.js"></script>
+        
     </head>
 
     <body>
@@ -18,13 +18,26 @@
         
         <h1 id="heading2">Cart</h1>
         
+        <div id="cartItems">
+            <div class="cartItemBox">
+                <img src="images/friedRice.jpg" class="cartItemPic" width=100%></img>
+                <div id="cartItemNameAndPrice">
+                    <p class=cartItemName>Fried Rice</p>
+                    <p class=cartItemPrice>$1.50</p>
+                </div>
+                <div class="cartQtyCont"><div class="cartMinus">-</div><p class="cartQty">1</p><div class="cartAdd">+</div><p class=itemTotalPrice>$6.00</p></div>
+            </div>
+            
+        </div>
+
         <div id="totalBox">
             <hr>
             <p id="totalText">Total</p><p id="cartTotal">$0.00</p>
             <div id="makeOrderButton">Make Order</div>
+            
         </div>
         
         
-        
+        <script src="scriptCart.js"></script>
     </body>
 </html>

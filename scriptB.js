@@ -15,9 +15,14 @@ if (this.readyState == 4 && this.status == 200) {
             bevAmount[x]--;
             document.getElementById("itemAmount").innerHTML = bevAmount[x];
             }
-        window.addItemToCart = function addItemToCart(x) {
-            
         }
+        window.addItemToCart = function addItemToCart(x) {
+            if (bevAmount[x] !== 0) {
+            localStorage.setItem("itemPic"+x,mydata.beverages[x].image);  
+            localStorage.setItem("itemName"+x,mydata.beverages[x].name);    
+            localStorage.setItem("itemPrice"+x,mydata.beverages[x].price); 
+            localStorage.setItem("itemQty"+x,bevAmount[x]); 
+            }    
         }
 
         document.getElementById("itemPic").src = mydata.beverages[x].image;
