@@ -1,4 +1,5 @@
 bevAmount = [];
+bevIds = [];
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -18,9 +19,8 @@ if (this.readyState == 4 && this.status == 200) {
         }
         window.addItemToCart = function addItemToCart(x) {
             if (bevAmount[x] !== 0) {
-            localStorage.setItem("itemPic"+x,mydata.beverages[x].image);  
-            localStorage.setItem("itemName"+x,mydata.beverages[x].name);    
-            localStorage.setItem("itemPrice"+x,mydata.beverages[x].price); 
+            bevIds.push(x);
+            localStorage.setItem("itemIds",JSON.stringify(bevIds));  
             localStorage.setItem("itemQty"+x,bevAmount[x]); 
             }    
         }
@@ -48,7 +48,7 @@ if (this.readyState == 4 && this.status == 200) {
         objTo1.appendChild(itemBox);
         
         var objTo2 = document.getElementsByClassName("selBox")[i];
-        var itemImage = document.createElement("img")
+        var itemImage = document.createElement("img");
         itemImage.src = mydata.beverages[i].image;
         itemImage.setAttribute("width","100%");
         objTo2.appendChild(itemImage);
