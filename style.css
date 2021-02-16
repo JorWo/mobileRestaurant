@@ -329,7 +329,6 @@ hr  {
     display:flex;
     flex-direction:column;
     margin-left:65px;
-    
 }
 
 .cartItemBox {
@@ -341,8 +340,8 @@ hr  {
 
 .cartItemPic {
     margin-left: 65px;
-    width: 200px;
-    height: 200px;
+    width: 185px;
+    height: 185px;
     object-fit:cover;
     border: 10px solid whitesmoke;
     border-radius: 30px;
@@ -352,18 +351,19 @@ hr  {
 #cartItemNameAndPrice {
     display:flex;
     flex-direction:column;
+    margin-right:auto;
+    margin-left:20px;
     
 }
 .cartItemName {
     margin-top: 10px;
-    margin-left:-50px;
-    font-size: 60px;    
+    font-size: 45px;  
+    font-weight: bold;  
 }
 
 .cartItemPrice {
     margin-top: -10px;
-    margin-left:-50px;
-    font-size:50px;
+    font-size:45px;
     color:#273d4b;
 }
 
@@ -373,7 +373,7 @@ hr  {
     justify-content: center;
     align-items: center;
     flex-wrap:wrap;
-    font-size: 60px;
+    font-size: 50px;
     margin-right:65px;
 }
 
@@ -405,7 +405,8 @@ hr  {
 }
 
 .itemTotalPrice {
-    font-size: 50px;
+    font-size: 45px;
     margin-top: -10px;
     margin-left: auto;
+    font-weight: bold;
 }
