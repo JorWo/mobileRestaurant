@@ -1,4 +1,5 @@
 apeAmount = [];
+apeIds = JSON.parse(localStorage.getItem("apeIds")) || [];
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -16,6 +17,13 @@ if (this.readyState == 4 && this.status == 200) {
             document.getElementById("itemAmount").innerHTML = apeAmount[x];
             }
         }
+        window.addItemToCart = function addItemToCart(x) {
+            if (apeAmount[x] !== 0) {  
+                apeIds.push(x);
+                localStorage.setItem("apeIds",JSON.stringify(apeIds));  
+                localStorage.setItem("apeQty"+x,apeAmount[x]); 
+            }    
+        }
 
         document.getElementById("itemPic").src = mydata.appetizers[x].image;
         document.getElementById("itemName").innerHTML = mydata.appetizers[x].name;
@@ -27,6 +35,7 @@ if (this.readyState == 4 && this.status == 200) {
         document.getElementById("addToCartButton").style.visibility = "visible";
         document.getElementById("addToCartBut").setAttribute("onclick","addItemAmount("+x+")");
         document.getElementById("minusToCartBut").setAttribute("onclick","minusItemAmount("+x+")");
+        document.getElementById("addToCartButton").setAttribute("onclick","addItemToCart("+x+")");
     }
 
     for (i=0;i<Object.keys(mydata.appetizers).length;i++) {
