@@ -9,6 +9,12 @@ xmlhttp.onreadystatechange = function() {
         var bevIds = JSON.parse(localStorage.getItem("bevIds"));
         var apeIds = JSON.parse(localStorage.getItem("apeIds"));
 
+        var bevAmount = JSON.parse(localStorage.getItem("bevQty"));
+        var apeAmount = JSON.parse(localStorage.getItem("apeQty"));
+
+        var bevTotalPrice = 0;
+        var apeTotalPrice = 0;
+
         //Load beverages into cart
         for (var i=0; i<bevIds.length; i++) {
             var objTo1 = document.getElementById("cartItems");
@@ -66,6 +72,9 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.appendChild(itemTotalPriceNode);
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
+
+            bevTotalPrice += localStorage.getItem("bevQty"+bevIds[i])*mydata.beverages[bevIds[i]].price;
+            document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
         } 
         
         //Load appetizers into cart
@@ -125,10 +134,10 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.appendChild(itemTotalPriceNode);
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
-        } 
 
-        //Display total price
-        //document.getElementById("cartTotal").innerHTML = 
+            apeTotalPrice += localStorage.getItem("apeQty"+apeIds[i])*mydata.appetizers[apeIds[i]].price;
+            document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
+        } 
     }
 }
 xmlhttp.open("GET","items.json",true);

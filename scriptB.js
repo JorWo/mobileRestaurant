@@ -7,6 +7,8 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
+        document.getElementById("addToCartButton").innerHTML = "Add to cart";
+
         window.addItemAmount = function addItemAmount(x) {
             bevAmount[x]++;
             document.getElementById("itemAmount").innerHTML = bevAmount[x];
@@ -22,6 +24,9 @@ if (this.readyState == 4 && this.status == 200) {
                 bevIds.push(x);
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
                 localStorage.setItem("bevQty"+x,bevAmount[x]); 
+                document.getElementById("addToCartButton").innerHTML = "Item added ✓";
+                bevAmount[x] = 0;
+                document.getElementById("itemAmount").innerHTML = 0;
             }    
         }
 

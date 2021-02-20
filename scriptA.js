@@ -7,6 +7,8 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
+        document.getElementById("addToCartButton").innerHTML = "Add to cart";
+
         window.addItemAmount = function addItemAmount(x) {
             apeAmount[x]++;
             document.getElementById("itemAmount").innerHTML = apeAmount[x];
@@ -22,6 +24,9 @@ if (this.readyState == 4 && this.status == 200) {
                 apeIds.push(x);
                 localStorage.setItem("apeIds",JSON.stringify(apeIds));  
                 localStorage.setItem("apeQty"+x,apeAmount[x]); 
+                document.getElementById("addToCartButton").innerHTML = "Item added ✓";
+                apeAmount[x] = 0;
+                document.getElementById("itemAmount").innerHTML = 0;
             }    
         }
 
