@@ -1,4 +1,4 @@
-apeAmount = [];
+apeAmount = JSON.parse(localStorage.getItem("apeQty")) || [];
 apeIds = JSON.parse(localStorage.getItem("apeIds")) || [];
 
 var xmlhttp = new XMLHttpRequest();
@@ -8,6 +8,7 @@ if (this.readyState == 4 && this.status == 200) {
 
     window.loadItemBox = function loadItemBox(x) {
         document.getElementById("addToCartButton").innerHTML = "Add to cart";
+        document.getElementById("itemAmount").innerHTML = apeAmount[x];
 
         window.addItemAmount = function addItemAmount(x) {
             apeAmount[x]++;
@@ -21,12 +22,10 @@ if (this.readyState == 4 && this.status == 200) {
         }
         window.addItemToCart = function addItemToCart(x) {
             if (apeAmount[x] !== 0) {  
-                apeIds.push(x);
+                apeIds[x] = x;
                 localStorage.setItem("apeIds",JSON.stringify(apeIds));  
-                localStorage.setItem("apeQty"+x,apeAmount[x]); 
+                localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
-                apeAmount[x] = 0;
-                document.getElementById("itemAmount").innerHTML = 0;
             }    
         }
 
@@ -44,7 +43,9 @@ if (this.readyState == 4 && this.status == 200) {
     }
 
     for (i=0;i<Object.keys(mydata.appetizers).length;i++) {
-        apeAmount[i] = 0;
+        if (apeAmount.length < Object.keys(mydata.appetizers).length) {
+            apeAmount[i] = 0;
+        }
 
         var objTo1 = document.getElementById("selScroll");
         var itemBox = document.createElement("div");

@@ -1,6 +1,7 @@
-bevAmount = [];
+bevAmount = JSON.parse(localStorage.getItem("bevQty")) || [];
 bevIds = JSON.parse(localStorage.getItem("bevIds")) || [];
-  
+console.log(bevAmount);
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {
@@ -8,6 +9,7 @@ if (this.readyState == 4 && this.status == 200) {
 
     window.loadItemBox = function loadItemBox(x) {
         document.getElementById("addToCartButton").innerHTML = "Add to cart";
+        document.getElementById("itemAmount").innerHTML = bevAmount[x];
 
         window.addItemAmount = function addItemAmount(x) {
             bevAmount[x]++;
@@ -20,14 +22,12 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (bevAmount[x] !== 0) {  
-                bevIds.push(x);
+            if (bevAmount[x] !== 0) {
+                bevIds[x] = x;
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
-                localStorage.setItem("bevQty"+x,bevAmount[x]); 
+                localStorage.setItem("bevQty",JSON.stringify(bevAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
-                bevAmount[x] = 0;
-                document.getElementById("itemAmount").innerHTML = 0;
-            }    
+            }
         }
 
         document.getElementById("itemPic").src = mydata.beverages[x].image;
@@ -44,8 +44,9 @@ if (this.readyState == 4 && this.status == 200) {
     }
 
     for (i=0;i<Object.keys(mydata.beverages).length;i++) {
-        bevAmount[i] = 0;
-
+        if (bevAmount.length < Object.keys(mydata.beverages).length) {
+            bevAmount[i] = 0;
+        }
         var objTo1 = document.getElementById("selScroll");
         var itemBox = document.createElement("div");
         itemBox.setAttribute("class","selBox");
@@ -57,7 +58,6 @@ if (this.readyState == 4 && this.status == 200) {
         itemImage.src = mydata.beverages[i].image;
         itemImage.setAttribute("width","100%");
         objTo2.appendChild(itemImage);
-
     }    
     }
 }
