@@ -11,7 +11,6 @@ xmlhttp.onreadystatechange = function() {
         var mydata = JSON.parse(this.responseText);
         var bevIds = JSON.parse(localStorage.getItem("bevIds")) || [];
         var apeIds = JSON.parse(localStorage.getItem("apeIds")) || [];
-        console.log(apeIds);
 
         var bevAmount = JSON.parse(localStorage.getItem("bevQty")) || [];
         var apeAmount = JSON.parse(localStorage.getItem("apeQty")) || [];
@@ -19,6 +18,7 @@ xmlhttp.onreadystatechange = function() {
         var bevTotalPrice = 0;
         var apeTotalPrice = 0;
 
+        console.log(bevAmount);
         window.addBevAmount = function addBevAmount(x) {
             bevAmount[x]++;
             document.getElementsByClassName("cartQty")[bevIds.indexOf(x)].innerHTML = bevAmount[x];
@@ -68,7 +68,8 @@ xmlhttp.onreadystatechange = function() {
 
         //Load beverages into cart
         for (var i=0; i<bevIds.length; i++) {
-            if (bevAmount[i] !== 0) {
+            console.log(bevIds);
+            console.log("length: "+bevIds.length);
             var objTo1 = document.getElementById("cartItems");
             var itemBox = document.createElement("div");
             itemBox.setAttribute("class","cartItemBox");
@@ -109,7 +110,7 @@ xmlhttp.onreadystatechange = function() {
             minus.appendChild(minusSym);
 
             var itemQty = document.createElement("p");
-            var itemQtyNode = document.createTextNode(bevAmount[i]);
+            var itemQtyNode = document.createTextNode(bevAmount[bevIds[i]]);
             itemQty.appendChild(itemQtyNode);
             itemQty.setAttribute("class","cartQty");
             objTo4.appendChild(itemQty);
@@ -122,19 +123,17 @@ xmlhttp.onreadystatechange = function() {
             add.appendChild(addSym);
 
             var itemTotalPrice = document.createElement("p");
-            var itemTotalPriceNode = document.createTextNode("$"+(bevAmount[i]*mydata.beverages[bevIds[i]].price).toFixed(2));
+            var itemTotalPriceNode = document.createTextNode("$"+(bevAmount[bevIds[i]]*mydata.beverages[bevIds[i]].price).toFixed(2));
             itemTotalPrice.appendChild(itemTotalPriceNode);
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
-            bevTotalPrice += bevAmount[i]*mydata.beverages[bevIds[i]].price;
+            bevTotalPrice += bevAmount[bevIds[i]]*mydata.beverages[bevIds[i]].price;
             document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
-            }
         }
 
         //Load appetizers into cart
         for (var i=0; i<apeIds.length; i++) {
-            if (apeAmount[i] !== 0) {
             var objTo1 = document.getElementById("cartItems");
             var itemBox = document.createElement("div");
             itemBox.setAttribute("class","cartItemBox");
@@ -175,7 +174,7 @@ xmlhttp.onreadystatechange = function() {
             minus.appendChild(minusSym);
 
             var itemQty = document.createElement("p");
-            var itemQtyNode = document.createTextNode(apeAmount[i]);
+            var itemQtyNode = document.createTextNode(apeAmount[apeIds[i]]);
             itemQty.appendChild(itemQtyNode);
             itemQty.setAttribute("class","cartQty");
             objTo4.appendChild(itemQty);
@@ -188,14 +187,13 @@ xmlhttp.onreadystatechange = function() {
             add.appendChild(addSym);
 
             var itemTotalPrice = document.createElement("p");
-            var itemTotalPriceNode = document.createTextNode("$"+(apeAmount[i]*mydata.appetizers[apeIds[i]].price).toFixed(2));
+            var itemTotalPriceNode = document.createTextNode("$"+(apeAmount[apeIds[i]]*mydata.appetizers[apeIds[i]].price).toFixed(2));
             itemTotalPrice.appendChild(itemTotalPriceNode);
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
-            apeTotalPrice += apeAmount[i]*mydata.appetizers[apeIds[i]].price;
+            apeTotalPrice += apeAmount[apeIds[i]]*mydata.appetizers[apeIds[i]].price;
             document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
-            } 
         } 
     }
 }

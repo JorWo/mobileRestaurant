@@ -1,6 +1,5 @@
 bevAmount = JSON.parse(localStorage.getItem("bevQty")) || [];
 bevIds = JSON.parse(localStorage.getItem("bevIds")) || [];
-console.log(bevAmount);
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -23,7 +22,7 @@ if (this.readyState == 4 && this.status == 200) {
         }
         window.addItemToCart = function addItemToCart(x) {
             if (bevAmount[x] !== 0) {
-                bevIds[x] = x;
+                bevIds.push(x);
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
                 localStorage.setItem("bevQty",JSON.stringify(bevAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
