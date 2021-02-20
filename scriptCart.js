@@ -20,50 +20,50 @@ xmlhttp.onreadystatechange = function() {
 
         console.log(bevAmount);
         window.addBevAmount = function addBevAmount(x) {
-            bevAmount[x]++;
-            document.getElementsByClassName("cartQty")[bevIds.indexOf(x)].innerHTML = bevAmount[x];
+            bevAmount[bevIds[x]]++;
+            document.getElementsByClassName("cartQty")[x].innerHTML = bevAmount[bevIds[x]];
             localStorage.setItem("bevQty",JSON.stringify(bevAmount));
             bevTotalPrice += mydata.beverages[bevIds[x]].price;
-            document.getElementsByClassName("itemTotalPrice")[x].innerHTML = "$"+(bevAmount[x]*mydata.beverages[bevIds[x]].price).toFixed(2);
+            document.getElementsByClassName("itemTotalPrice")[x].innerHTML = "$"+(bevAmount[bevIds[x]]*mydata.beverages[bevIds[x]].price).toFixed(2);
             document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
         }
         window.minusBevAmount = function minusBevAmount(x) {
-            if (bevAmount[x] !== 0) {
-                bevAmount[x]--;
-                document.getElementsByClassName("cartQty")[bevIds.indexOf(x)].innerHTML = bevAmount[x];
+            if (bevAmount[bevIds[x]] !== 0) {
+                bevAmount[bevIds[x]]--;
+                document.getElementsByClassName("cartQty")[x].innerHTML = bevAmount[bevIds[x]];
                 localStorage.setItem("bevQty",JSON.stringify(bevAmount));
                 bevTotalPrice -= mydata.beverages[bevIds[x]].price;
-                document.getElementsByClassName("itemTotalPrice")[x].innerHTML = "$"+(bevAmount[x]*mydata.beverages[bevIds[x]].price).toFixed(2);
+                document.getElementsByClassName("itemTotalPrice")[x].innerHTML = "$"+(bevAmount[bevIds[x]]*mydata.beverages[bevIds[x]].price).toFixed(2);
                 document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
             }
-            else if (bevAmount[x] == 0) {
+            /*else if (bevAmount[bevIds[x]] <= 0) {
                 console.log(bevIds.indexOf(x));
                 document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[bevIds.indexOf(x)]);
                 bevIds.splice(bevIds.indexOf(x),1);
-            }
+            }*/
         }
         window.addApeAmount = function addApeAmount(x) {
-            apeAmount[x]++;
-            document.getElementsByClassName("cartQty")[apeIds.indexOf(x)+bevIds.length].innerHTML = apeAmount[x];
+            apeAmount[apeIds[x]]++;
+            document.getElementsByClassName("cartQty")[x+bevIds.length].innerHTML = apeAmount[apeIds[x]];
             localStorage.setItem("apeQty",JSON.stringify(apeAmount));
             apeTotalPrice += mydata.appetizers[apeIds[x]].price;
-            document.getElementsByClassName("itemTotalPrice")[x+bevIds.length].innerHTML = "$"+(apeAmount[x]*mydata.appetizers[apeIds[x]].price).toFixed(2);
+            document.getElementsByClassName("itemTotalPrice")[x+bevIds.length].innerHTML = "$"+(apeAmount[apeIds[x]]*mydata.appetizers[apeIds[x]].price).toFixed(2);
             document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
         }
         window.minusApeAmount = function minusApeAmount(x) {
-            if (apeAmount[x] !== 0) {
-                apeAmount[x]--;
-                document.getElementsByClassName("cartQty")[apeIds.indexOf(x)+bevIds.length].innerHTML = apeAmount[x];
+            if (apeAmount[apeIds[x]] !== 0) {
+                apeAmount[apeIds[x]]--;
+                document.getElementsByClassName("cartQty")[x+bevIds.length].innerHTML = apeAmount[apeIds[x]];
                 localStorage.setItem("apeQty",JSON.stringify(apeAmount));
                 apeTotalPrice -= mydata.appetizers[apeIds[x]].price;
-                document.getElementsByClassName("itemTotalPrice")[x+bevIds.length].innerHTML = "$"+(apeAmount[x]*mydata.appetizers[apeIds[x]].price).toFixed(2);
+                document.getElementsByClassName("itemTotalPrice")[x+bevIds.length].innerHTML = "$"+(apeAmount[apeIds[x]]*mydata.appetizers[apeIds[x]].price).toFixed(2);
                 document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
             }
-            else if (apeAmount[x] == 0) {
+            /*else if (apeAmount[x] == 0) {
                 console.log(apeIds.indexOf(x)+bevIds.length);
                 document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[apeIds.indexOf(x)+bevIds.length]);
                 apeIds.splice(apeIds.indexOf(x),1);
-            }
+            }*/
         }
 
         //Load beverages into cart
