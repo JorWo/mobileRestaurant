@@ -18,7 +18,6 @@ xmlhttp.onreadystatechange = function() {
         var bevTotalPrice = 0;
         var apeTotalPrice = 0;
 
-        console.log(bevAmount);
         window.addBevAmount = function addBevAmount(x) {
             bevAmount[bevIds[x]]++;
             document.getElementsByClassName("cartQty")[x].innerHTML = bevAmount[bevIds[x]];
@@ -36,11 +35,15 @@ xmlhttp.onreadystatechange = function() {
                 document.getElementsByClassName("itemTotalPrice")[x].innerHTML = "$"+(bevAmount[bevIds[x]]*mydata.beverages[bevIds[x]].price).toFixed(2);
                 document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
             }
-            /*else if (bevAmount[bevIds[x]] <= 0) {
-                console.log(bevIds.indexOf(x));
-                document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[bevIds.indexOf(x)]);
-                bevIds.splice(bevIds.indexOf(x),1);
-            }*/
+            else if (bevAmount[bevIds[x]] <= 0) {
+                document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[x]);
+                bevIds.splice(bevIds.indexOf(bevIds[x]),1);
+                localStorage.setItem("bevIds",JSON.stringify(bevIds));
+                localStorage.setItem("bevQty",JSON.stringify(bevAmount));
+                for (var i=0;i<bevIds.length;i++) {
+                    document.getElementsByClassName("cartMinus")[i].setAttribute("onclick","minusBevAmount("+i+")");
+                }
+            }
         }
         window.addApeAmount = function addApeAmount(x) {
             apeAmount[apeIds[x]]++;
@@ -59,17 +62,19 @@ xmlhttp.onreadystatechange = function() {
                 document.getElementsByClassName("itemTotalPrice")[x+bevIds.length].innerHTML = "$"+(apeAmount[apeIds[x]]*mydata.appetizers[apeIds[x]].price).toFixed(2);
                 document.getElementById("cartTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice).toFixed(2);
             }
-            /*else if (apeAmount[x] == 0) {
-                console.log(apeIds.indexOf(x)+bevIds.length);
-                document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[apeIds.indexOf(x)+bevIds.length]);
-                apeIds.splice(apeIds.indexOf(x),1);
-            }*/
+            else if (apeAmount[apeIds[x]] <= 0) {
+                document.getElementById("cartItems").removeChild(document.getElementsByClassName("cartItemBox")[x+bevIds.length]);
+                apeIds.splice(apeIds.indexOf(apeIds[x]),1);
+                localStorage.setItem("apeIds",JSON.stringify(apeIds));
+                localStorage.setItem("apeQty",JSON.stringify(apeAmount));
+                for (var i=0;i<apeIds.length;i++) {
+                    document.getElementsByClassName("cartMinus")[i+bevIds.length].setAttribute("onclick","minusApeAmount("+i+")");
+                }
+            }
         }
 
         //Load beverages into cart
         for (var i=0; i<bevIds.length; i++) {
-            console.log(bevIds);
-            console.log("length: "+bevIds.length);
             var objTo1 = document.getElementById("cartItems");
             var itemBox = document.createElement("div");
             itemBox.setAttribute("class","cartItemBox");
