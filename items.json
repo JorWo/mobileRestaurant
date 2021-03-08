@@ -35,19 +35,19 @@
         {
             "name":"Bowl of Rice",
             "price":1.00,
-            "desc":"White rice",
+            "desc":"1 each: White rice",
             "image":"images/rice.jpg"
         },
         {
             "name":"Fried Rice",
             "price":1.50,
-            "desc":"Egg fried rice",
+            "desc":"1 each: Egg fried rice",
             "image":"images/friedRice.jpg"
         },
         {
             "name":"Spam Musubi",
-            "price":3.50,
-            "desc":"Four spam musubis",
+            "price":1.25,
+            "desc":"1 each: Spam musubis",
             "image":"images/spamMusubi.jpg"
         }
     ],
@@ -84,6 +84,23 @@
         }
     ],
     "desserts":[
-
+        {
+            "name":"Malasada",
+            "price":2.00,
+            "desc":"1 each: Donut with no hole",
+            "image":"images/malasada.jpg"
+        },
+        {
+            "name":"Butter Mochi",
+            "price":4.00,
+            "desc":"4 each: Mochi made from coconut and mochiko",
+            "image":"images/butterMochi.jpg"
+        },
+        {
+            "name":"Mochi Ice Cream",
+            "price":3.00,
+            "desc":"3 each: Green tea mochi ice cream",
+            "image":"images/mochiIceCream.jpg"
+        }
     ]
 }
