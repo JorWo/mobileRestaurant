@@ -3,6 +3,7 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
+    padding-bottom:500px;
 }
 
 /* header & navbar container */
@@ -151,7 +152,6 @@ h1 {
 /* food pages */
 #selScroll {
     margin-left: 55px;
-    padding-bottom: 200px;
     width: 350px;
     overflow-y: scroll;
     align-items: center;
@@ -197,7 +197,6 @@ h1 {
 }
 
 #itemPrice {
-    margin-top:-40px;
     font-weight: bold;
     font-size: 60px;
     color: #273d4b;
@@ -206,6 +205,7 @@ h1 {
 #itemDesc {
     font-size: 40px;
     margin-top:-40px;
+    margin-bottom:80px;
     text-align: center;
 }
 
@@ -214,7 +214,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top:-125px;
-    font-size: 80px;
+    font-size: 65px;
     flex-wrap: wrap;
 }
 
@@ -288,8 +288,7 @@ footer {
     bottom: 0;
     width: 100vw;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     z-index: 5;
     padding-top:10px;
 }
@@ -298,12 +297,39 @@ hr  {
     width: 90%;
 }
 
+#totalBoxRow1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom:-90px;
+}
+
 #totalText {
     font-size: 60px;
     margin-left: 65px;
 }
 
 #cartTotal {
+    font-size: 60px;
+    margin-right: 65px;
+}
+
+#totalBoxRow2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#subTotalBox {
+    display:flex;
+}
+
+#subText {
+    font-size: 60px;
+    margin-left: 65px;
+}
+
+#subTotal {
     font-size: 60px;
     margin-right: 65px;
 }

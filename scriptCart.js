@@ -2,6 +2,7 @@ function finalizeOrder() {
     if (localStorage.length !== 0) {
     document.getElementById("makeOrderButton").innerHTML = "Order Received ✓"
     localStorage.clear();
+    setTimeout(function(){location.href="index.html"},1000);
     }
 }
 
@@ -28,6 +29,7 @@ xmlhttp.onreadystatechange = function() {
         console.log(bevAmount);
 
         window.showTotal = function showTotal() {
+            document.getElementById("subTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2);
             document.getElementById("cartTotal").innerHTML = "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2);
         }
 

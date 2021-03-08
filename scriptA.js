@@ -1,5 +1,6 @@
 apeAmount = JSON.parse(localStorage.getItem("apeQty")) || [];
 apeIds = JSON.parse(localStorage.getItem("apeIds")) || [];
+var timeOut;
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -7,6 +8,7 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
+        clearTimeout(timeOut);
         if (apeAmount[x] !== 0) {
             document.getElementById("addToCartButton").innerHTML = "Modify amount";
         }
@@ -31,7 +33,7 @@ if (this.readyState == 4 && this.status == 200) {
                 localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
                 document.getElementById("addToCartButton").style.pointerEvents = "none";
-                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},2000);
+                timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
             else if (apeAmount[x] == 0) {
@@ -40,7 +42,7 @@ if (this.readyState == 4 && this.status == 200) {
                 localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item removed ✓";
                 document.getElementById("addToCartButton").style.pointerEvents = "none";
-                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},2000);
+                timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
             else {
@@ -50,7 +52,7 @@ if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
                 }
                 document.getElementById("addToCartButton").style.pointerEvents = 'none';
-                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},2000);
+                timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
         }
