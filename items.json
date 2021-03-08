@@ -2,31 +2,31 @@
     "beverages":[
         {
             "name":"Sprite",
-            "price":3.00,
+            "price":1.00,
             "desc":"Lemon-lime thirst quencher",
             "image":"images/sprite.jpg"
         },
         {
             "name":"Coca-Cola",
-            "price":3.00,
+            "price":1.00,
             "desc":"Cocaine filled soda",
             "image":"images/coke.jpg"
         },
         {
             "name":"Mountain Dew",
-            "price":3.00,
+            "price":1.00,
             "desc":"Gamer soda",
             "image":"images/mountaindew.jpg"
         },
         {
             "name":"Orange Fanta",
-            "price":3.00,
+            "price":1.00,
             "desc":"Orange juice on crack",
             "image":"images/fanta.jpg"
         },
         {
             "name":"Ramune",
-            "price":3.00,
+            "price":1.00,
             "desc":"Blue soda",
             "image":"images/ramune.jpg"
         }
@@ -52,7 +52,36 @@
         }
     ],
     "entrees":[
-
+        {
+            "name":"Loco Moco",
+            "price":11.50,
+            "desc":"Hamburger patties topped with egg and gravy with rice",
+            "image":"images/locoMoco.jpg"
+        },
+        {
+            "name":"Chicken Katsu",
+            "price":10.50,
+            "desc":"Fried chicken cutlet served with katsu sauce and rice",
+            "image":"images/chickenKatsu.jpg"
+        },
+        {
+            "name":"Kalua Pork",
+            "price":11.00,
+            "desc":"Kalua pork served with cabbage and rice",
+            "image":"images/kaluaPork.jpg"
+        },
+        {
+            "name":"Kalbi",
+            "price":10.00,
+            "desc":"Barbeque short ribs served with rice",
+            "image":"images/kalbi.jpg"
+        },
+        {
+            "name":"BBQ Chicken",
+            "price":10.00,
+            "desc":"Barbeque chicken served with rice",
+            "image":"images/bbqChicken.jpg"
+        }
     ],
     "desserts":[
 
