@@ -7,9 +7,13 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
-        document.getElementById("addToCartButton").innerHTML = "Add to cart";
-        document.getElementById("itemAmount").innerHTML = entAmount[x];
-
+        if (entAmount[x] !== 0) {
+            document.getElementById("addToCartButton").innerHTML = "Modify amount";
+        }
+        else {
+            document.getElementById("addToCartButton").innerHTML = "Add to cart";
+            document.getElementById("itemAmount").innerHTML = entAmount[x];
+        }
         window.addItemAmount = function addItemAmount(x) {
             entAmount[x]++;
             document.getElementById("itemAmount").innerHTML = entAmount[x];
@@ -21,12 +25,34 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (entAmount[x] !== 0) {  
+            if (entAmount[x] !== 0 && !(x in entIds)) {
                 entIds.push(x);
                 localStorage.setItem("entIds",JSON.stringify(entIds));  
                 localStorage.setItem("entQty",JSON.stringify(entAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
-            }    
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
+            else if (entAmount[x] == 0) {
+                entIds.splice(entIds[x],1);
+                localStorage.setItem("entIds",JSON.stringify(entIds));  
+                localStorage.setItem("entQty",JSON.stringify(entAmount)); 
+                document.getElementById("addToCartButton").innerHTML = "Item removed ✓";
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
+            else {
+                localStorage.setItem("entIds",JSON.stringify(entIds));  
+                localStorage.setItem("entQty",JSON.stringify(entAmount)); 
+                if (document.getElementById("addToCartButton").innerHTML == "Modify amount") {
+                    document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
+                }
+                document.getElementById("addToCartButton").style.pointerEvents = 'none';
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
         }
 
         document.getElementById("itemPic").src = mydata.entrees[x].image;

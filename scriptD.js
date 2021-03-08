@@ -7,9 +7,13 @@ if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
 
     window.loadItemBox = function loadItemBox(x) {
-        document.getElementById("addToCartButton").innerHTML = "Add to cart";
-        document.getElementById("itemAmount").innerHTML = desAmount[x];
-
+        if (desAmount[x] !== 0) {
+            document.getElementById("addToCartButton").innerHTML = "Modify amount";
+        }
+        else {
+            document.getElementById("addToCartButton").innerHTML = "Add to cart";
+            document.getElementById("itemAmount").innerHTML = desAmount[x];
+        }
         window.addItemAmount = function addItemAmount(x) {
             desAmount[x]++;
             document.getElementById("itemAmount").innerHTML = desAmount[x];
@@ -21,12 +25,34 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (desAmount[x] !== 0) {  
+            if (desAmount[x] !== 0 && !(x in desIds)) {
                 desIds.push(x);
                 localStorage.setItem("desIds",JSON.stringify(desIds));  
                 localStorage.setItem("desQty",JSON.stringify(desAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
-            }    
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
+            else if (desAmount[x] == 0) {
+                desIds.splice(desIds[x],1);
+                localStorage.setItem("desIds",JSON.stringify(desIds));  
+                localStorage.setItem("desQty",JSON.stringify(desAmount)); 
+                document.getElementById("addToCartButton").innerHTML = "Item removed ✓";
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
+            else {
+                localStorage.setItem("desIds",JSON.stringify(desIds));  
+                localStorage.setItem("desQty",JSON.stringify(desAmount)); 
+                if (document.getElementById("addToCartButton").innerHTML == "Modify amount") {
+                    document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
+                }
+                document.getElementById("addToCartButton").style.pointerEvents = 'none';
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
         }
 
         document.getElementById("itemPic").src = mydata.desserts[x].image;
