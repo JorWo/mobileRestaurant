@@ -21,12 +21,31 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (apeAmount[x] !== 0) {  
+            if (apeAmount[x] !== 0 && !(x in apeIds)) {
                 apeIds.push(x);
+            }
+            else if (apeAmount[x] == 0) {
+                apeIds.splice(apeIds[x],1);
                 localStorage.setItem("apeIds",JSON.stringify(apeIds));  
                 localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 
-                document.getElementById("addToCartButton").innerHTML = "Item added ✓";
-            }    
+                document.getElementById("addToCartButton").innerHTML = "Item removed ✓";
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
+            else {
+                localStorage.setItem("apeIds",JSON.stringify(apeIds));  
+                localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 
+                if (document.getElementById("addToCartButton").innerHTML == "Change amount") {
+                    document.getElementById("addToCartButton").innerHTML = "Item changed ✓";
+                }
+                else {
+                    document.getElementById("addToCartButton").innerHTML = "Item added ✓";
+                }
+                document.getElementById("addToCartButton").style.pointerEvents = 'none';
+                setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Change amount";},2000);
+                document.getElementById("addToCartButton").style.pointerEvents = 'auto';
+            }
         }
 
         document.getElementById("itemPic").src = mydata.appetizers[x].image;
