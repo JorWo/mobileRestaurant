@@ -36,7 +36,7 @@ if (this.readyState == 4 && this.status == 200) {
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
-            else if (bevAmount[x] == 0) {
+            else if (bevAmount[x] == 0 && (document.getElementById("addToCartButton").innerHTML == "Modify amount")) {
                 bevIds.splice(bevIds[x],1);
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
                 localStorage.setItem("bevQty",JSON.stringify(bevAmount)); 
@@ -45,13 +45,11 @@ if (this.readyState == 4 && this.status == 200) {
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
-            else {
+            else if (bevAmount[x] !== 0 && (document.getElementById("addToCartButton").innerHTML == "Modify amount")){
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
                 localStorage.setItem("bevQty",JSON.stringify(bevAmount)); 
-                if (document.getElementById("addToCartButton").innerHTML == "Modify amount") {
-                    document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
-                }
-                document.getElementById("addToCartButton").style.pointerEvents = 'none';
+                document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }

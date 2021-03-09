@@ -36,7 +36,7 @@ if (this.readyState == 4 && this.status == 200) {
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
-            else if (entAmount[x] == 0) {
+            else if (entAmount[x] == 0 && (document.getElementById("addToCartButton").innerHTML == "Modify amount")) {
                 entIds.splice(entIds[x],1);
                 localStorage.setItem("entIds",JSON.stringify(entIds));  
                 localStorage.setItem("entQty",JSON.stringify(entAmount)); 
@@ -45,13 +45,11 @@ if (this.readyState == 4 && this.status == 200) {
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Add to cart";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }
-            else {
+            else if (entAmount[x] !== 0 && (document.getElementById("addToCartButton").innerHTML == "Modify amount")){
                 localStorage.setItem("entIds",JSON.stringify(entIds));  
                 localStorage.setItem("entQty",JSON.stringify(entAmount)); 
-                if (document.getElementById("addToCartButton").innerHTML == "Modify amount") {
-                    document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
-                }
-                document.getElementById("addToCartButton").style.pointerEvents = 'none';
+                document.getElementById("addToCartButton").innerHTML = "Amount modified ✓";
+                document.getElementById("addToCartButton").style.pointerEvents = "none";
                 timeOut = setTimeout(function(){document.getElementById("addToCartButton").innerHTML = "Modify amount";},1000);
                 document.getElementById("addToCartButton").style.pointerEvents = 'auto';
             }

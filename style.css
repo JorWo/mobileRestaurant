@@ -104,6 +104,7 @@ nav {
 /* popular page */
 h1 {
     font-size: 60px;
+    font-weight: bold;
     margin-top: 400px;
     margin-left: 65px;
 }

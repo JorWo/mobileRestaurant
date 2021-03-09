@@ -19,9 +19,6 @@ xmlhttp.onreadystatechange = function() {
 
         var allCartItems = [];
 
-        console.log(bevIds);
-        console.log(bevAmount);
-
         window.showTotal = function showTotal() {
             document.getElementById("subTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2);
             document.getElementById("cartTotal").innerHTML = "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2);
