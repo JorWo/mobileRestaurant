@@ -17,20 +17,14 @@ xmlhttp.onreadystatechange = function() {
         var entTotalPrice = 0;
         var desTotalPrice = 0;
 
+        var allCartItems = [];
+
         console.log(bevIds);
         console.log(bevAmount);
 
         window.showTotal = function showTotal() {
             document.getElementById("subTotal").innerHTML = "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2);
             document.getElementById("cartTotal").innerHTML = "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2);
-        }
-
-        window.finalizeOrder = function finalizeOrder() {
-            if ((bevTotalPrice+apeTotalPrice+entTotalPrice+desTotalPrice) !== 0) {
-            document.getElementById("makeOrderButton").innerHTML = "Order Received ✓"
-            localStorage.clear();
-            setTimeout(function(){location.href="index.html"},1000);
-            }
         }
 
         //Beverage modify quantity function
@@ -206,6 +200,7 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
+            allCartItems.push(bevAmount[bevIds[i]] + " x " + mydata.beverages[bevIds[i]].name);
             bevTotalPrice += bevAmount[bevIds[i]]*mydata.beverages[bevIds[i]].price;
             showTotal();
         }
@@ -270,6 +265,7 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
+            allCartItems.push(apeAmount[apeIds[i]] + " x " + mydata.appetizers[apeIds[i]].name);
             apeTotalPrice += apeAmount[apeIds[i]]*mydata.appetizers[apeIds[i]].price;
             showTotal();
         } 
@@ -334,6 +330,7 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
+            allCartItems.push(entAmount[entIds[i]] + " x " + mydata.entrees[entIds[i]].name);
             entTotalPrice += entAmount[entIds[i]]*mydata.entrees[entIds[i]].price;
             showTotal();
         } 
@@ -398,8 +395,33 @@ xmlhttp.onreadystatechange = function() {
             itemTotalPrice.setAttribute("class","itemTotalPrice");
             objTo4.appendChild(itemTotalPrice);
 
+            allCartItems.push(desAmount[desIds[i]] + " x " + mydata.desserts[desIds[i]].name);
             desTotalPrice += desAmount[desIds[i]]*mydata.desserts[desIds[i]].price;
             showTotal();
+        }
+
+        window.finalizeOrder = function finalizeOrder() {
+            if ((bevTotalPrice+apeTotalPrice+entTotalPrice+desTotalPrice) !== 0) {
+            document.getElementById("makeOrderButton").innerHTML = "Order Received ✓"
+            var newOrder = {
+                "tableNum": 1,
+                "order": allCartItems.toString(),
+                "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
+                "total":"$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
+            };
+            xmlhttp.open('POST', '/kitchen.php', true);
+            xmlhttp.setRequestHeader("Content-Type", "application/json");
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 || this.status === 200) {
+                    console.log(this.responseText); // echo from php
+                }
+            };
+            xmlhttp.send(JSON.stringify(newOrder));
+            console.log(JSON.stringify(newOrder));
+
+            localStorage.clear();
+            //setTimeout(function(){location.href="index.html"},1000);
+            }
         } 
     }
 }
