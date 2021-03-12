@@ -24,20 +24,35 @@
                 <div class="button"><a href="appetizers.html"><img src="images/iconAppetizer.png" width=100%></a><p id="navA">Appetizers</p></div>
                 <div class="button"><a href="entrees.html"><img src="images/iconEntree.png" width=100%></a><p id="navE">Entrées</p></div>
                 <div class="button"><a href="desserts.html"><img src="images/iconDessert.png" width=100%></a><p id="navD">Desserts</p></div>
-                <input id="searchBar" type="text" placeholder="Search" onkeyup="search()"><i class="fa fa-search" style="font-size:40px"></i>
+                <input id="searchBar" type="text" placeholder="Search" onkeyup="searchItem()"><i class="fa fa-search" style="font-size:40px"></i>
 
             </nav>
         </header> 
-        <!--
-        <h1>Popular</h1>
+
+        <main>
+            <div id="selScroll">
+            </div>
+            <div id="itemBox">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="itemPic"></img>
+                <p id="itemName"></p>
+                <p id="itemDesc"></p>
+
+                <div id="addToCart">
+                    <p id="itemPrice"></p>
+                    <div id="minusToCartBut">-</div><p id="itemAmount"></p><div id="addToCartBut">+</div>
+                    <div id="addToCartButton">Add to cart</div>
+                </div>
+            </div>
+        </main>
+        
+        <h1 id="pop">Popular</h1>
         <main id="popular">
             <div id="pop1"></div>
             <div id="pop2"></div>
             <div id="pop3"></div>
             <div id="pop4"></div>
         </main>
-        -->
-
+        
         <script src="script.js"></script>
     </body>
 </html>

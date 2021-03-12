@@ -132,6 +132,10 @@ h1 {
     margin-left: 65px;
 }
 
+#pop {
+    margin-top: 175px;
+}
+
 #popular {
     display: flex;
     justify-content: center;
