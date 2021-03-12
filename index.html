@@ -2,7 +2,13 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >  
+        <style>
+            h1 {
+                margin-top: 570px;
+            }
+        </style>
     </head>
 
     <body>
@@ -18,9 +24,11 @@
                 <div class="button"><a href="appetizers.html"><img src="images/iconAppetizer.png" width=100%></a><p id="navA">Appetizers</p></div>
                 <div class="button"><a href="entrees.html"><img src="images/iconEntree.png" width=100%></a><p id="navE">Entrées</p></div>
                 <div class="button"><a href="desserts.html"><img src="images/iconDessert.png" width=100%></a><p id="navD">Desserts</p></div>
+                <input id="searchBar" type="text" placeholder="Search" onkeyup="search()"><i class="fa fa-search" style="font-size:40px"></i>
+
             </nav>
         </header> 
-        
+        <!--
         <h1>Popular</h1>
         <main id="popular">
             <div id="pop1"></div>
@@ -28,5 +36,8 @@
             <div id="pop3"></div>
             <div id="pop4"></div>
         </main>
+        -->
+
+        <script src="script.js"></script>
     </body>
 </html>
