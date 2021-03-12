@@ -406,7 +406,7 @@ xmlhttp.onreadystatechange = function() {
                 "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
                 "total":"$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
             };
-            xmlhttp.open('POST', 'sendKitchen.php', true);
+            xmlhttp.open('POST', '/sendKitchen.php', true);
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState === 4 || this.status === 200) {
