@@ -27,7 +27,7 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (bevAmount[x] !== 0 && !(x in bevIds)) {
+            if (bevAmount[x] !== 0 && !(bevIds.includes(x))) {
                 bevIds.push(x);
                 localStorage.setItem("bevIds",JSON.stringify(bevIds));  
                 localStorage.setItem("bevQty",JSON.stringify(bevAmount)); 

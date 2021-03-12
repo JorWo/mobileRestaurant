@@ -27,7 +27,7 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (apeAmount[x] !== 0 && !(x in apeIds)) {
+            if (apeAmount[x] !== 0 && !(apeIds.includes(x))) {
                 apeIds.push(x);
                 localStorage.setItem("apeIds",JSON.stringify(apeIds));  
                 localStorage.setItem("apeQty",JSON.stringify(apeAmount)); 

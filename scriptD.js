@@ -27,7 +27,7 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (desAmount[x] !== 0 && !(x in desIds)) {
+            if (desAmount[x] !== 0 && !(desIds.includes(x))) {
                 desIds.push(x);
                 localStorage.setItem("desIds",JSON.stringify(desIds));  
                 localStorage.setItem("desQty",JSON.stringify(desAmount)); 

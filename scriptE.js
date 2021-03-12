@@ -6,7 +6,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(this.responseText);
-
+    
     window.loadItemBox = function loadItemBox(x) {
         clearTimeout(timeOut);
         if (entAmount[x] !== 0) {
@@ -27,8 +27,9 @@ if (this.readyState == 4 && this.status == 200) {
             }
         }
         window.addItemToCart = function addItemToCart(x) {
-            if (entAmount[x] !== 0 && !(x in entIds)) {
+            if (entAmount[x] !== 0 && !(entIds.includes(x))) {
                 entIds.push(x);
+                console.log(entIds);
                 localStorage.setItem("entIds",JSON.stringify(entIds));  
                 localStorage.setItem("entQty",JSON.stringify(entAmount)); 
                 document.getElementById("addToCartButton").innerHTML = "Item added ✓";
