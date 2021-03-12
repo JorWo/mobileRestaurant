@@ -224,8 +224,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width:100px;
-    height:100px;
+    width:80px;
+    height:80px;
     margin:20px;
     color:#273d4b; 
     border: 1px solid lightgray;
