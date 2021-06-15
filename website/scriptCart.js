@@ -397,24 +397,25 @@ xmlhttp.onreadystatechange = function() {
             showTotal();
         }
 
-        window.finalizeOrder = function finalizeOrder() {
+        //Send order to node.js
+        window.finalizeOrder = async function finalizeOrder() {
             if ((bevTotalPrice+apeTotalPrice+entTotalPrice+desTotalPrice) !== 0) {
             document.getElementById("makeOrderButton").innerHTML = "Order Received ✓"
-            var newOrder = {
-                "tableNum": 1,
-                "order": allCartItems.toString(),
-                "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
-                "total":"$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
-            };
-            xmlhttp.open('POST', '/sendKitchen.php', true);
-            xmlhttp.setRequestHeader("Content-Type", "application/json");
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState === 4 || this.status === 200) {
-                    console.log(this.responseText); // echo from php
-                }
-            };
-            xmlhttp.send(JSON.stringify(newOrder));
-            console.log(JSON.stringify(newOrder));
+
+            const result = await fetch('/api/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    "tableNum": 1,
+                    "order": allCartItems.toString(),
+                    "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
+                    "total": "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
+                })
+            }).then((res) => res.json());
+
+            console.log(result);
 
             localStorage.clear();
             setTimeout(function(){location.href="index.html"},1000);
