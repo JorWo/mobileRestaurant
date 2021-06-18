@@ -398,6 +398,8 @@ xmlhttp.onreadystatechange = function() {
         }
 
         //Send order to node.js
+        const urlParams = new URLSearchParams(window.location.search);
+
         window.finalizeOrder = async function finalizeOrder() {
             if ((bevTotalPrice+apeTotalPrice+entTotalPrice+desTotalPrice) !== 0) {
             document.getElementById("makeOrderButton").innerHTML = "Order Received ✓"
@@ -408,7 +410,7 @@ xmlhttp.onreadystatechange = function() {
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify({
-                    "tableNum": 1,
+                    "tableNum": urlParams.get('table'),
                     "order": allCartItems.toString(),
                     "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
                     "total": "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
@@ -418,7 +420,7 @@ xmlhttp.onreadystatechange = function() {
             console.log(result);
 
             localStorage.clear();
-            setTimeout(function(){location.href="index.html"},1000);
+            //setTimeout(function(){location.href="index.html"},1000);
             }
         } 
     }

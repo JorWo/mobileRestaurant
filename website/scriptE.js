@@ -2,6 +2,9 @@ entAmount = JSON.parse(localStorage.getItem("entQty")) || [];
 entIds = JSON.parse(localStorage.getItem("entIds")) || [];
 var timeOut;
 
+document.getElementsByClassName("button")[2].style.borderColor = "lightblue";
+document.getElementsByClassName("button")[2].style.backgroundColor = "lightblue";
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {

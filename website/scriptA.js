@@ -2,6 +2,9 @@ apeAmount = JSON.parse(localStorage.getItem("apeQty")) || [];
 apeIds = JSON.parse(localStorage.getItem("apeIds")) || [];
 var timeOut;
 
+document.getElementsByClassName("button")[1].style.borderColor = "lightblue";
+document.getElementsByClassName("button")[1].style.backgroundColor = "lightblue";
+
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {
