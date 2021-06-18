@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="kitchen.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    </head>
+
+    <body>
+        <header>
+            <div id="logo"></div>
+                <a href='/'><img id="logo" src="images/logo.jpg" width=100%></img></a>
+            </div>
+            <h1>Kitchen View</h1>
+            <p id="ordersToday">Today's orders:</p>
+            <p id="lastOrderTime">Last Order:</p>
+            <p id="currentTime">Time:</p>
+        </header>
+
+        <div id="tables">
+            <% var tables = 10 %>
+
+            <% for (i=0;i<tables;i++) { %>
+                <div class="tableBox">
+                    <p id="tableTitle">Table <%= i+1 %></p>
+                    <% if (tableOrder.length > 0) { %>
+                        <%  tableOrder.forEach(order => { %>
+                            <% if (order.tableNum == i+1) { %>
+                                <p id="tableOrder">•<%= order.order%></p>
+                            <% } %>
+                        <% }) %>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+
+    </body>
+</html>

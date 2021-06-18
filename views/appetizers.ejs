@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <%- include('partials/header') %>
+        
+        <main>
+            <h1>Appetizers</h1>
+            <div id="selScroll">
+            </div>
+            <div id="itemBox">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="itemPic"></img>
+                <p id="itemName"></p>
+                <p id="itemDesc"></p>
+
+                <div id="addToCart">
+                    <p id="itemPrice"></p>
+                    <div id="minusToCartBut">-</div><p id="itemAmount"></p><div id="addToCartBut">+</div>
+                    <div id="addToCartButton">Add to cart</div>
+                </div>
+            </div>
+        </main>
+
+        <script src="scriptA.js"></script>
+    </body>
+</html>

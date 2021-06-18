@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+        <style>
+            body {
+                padding-bottom:500px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div id="backArrow">
+                <a onclick="window.history.back()"><img src="images/backArrow.png" width=58.5%></img></a>
+            </div>
+            <div id="logo">
+                <a href= <%= '/?table='+tableNum %> ><img src="images/logo.jpg" width=288%></img></a>
+            </div>
+        </header>
+        
+        <h1 id="heading2">Cart</h1>
+        
+        <div id="cartItems">
+            <!--
+            <div class="cartItemBox">
+                <img src="images/friedRice.jpg" class="cartItemPic" width=100%></img>
+                <div id="cartItemNameAndPrice">
+                    <p class=cartItemName>Fried Rice</p>
+                    <p class=cartItemPrice>$1.50</p>
+                </div>
+                <div class="cartQtyCont"><div class="cartMinus">-</div><p class="cartQty">1</p><div class="cartAdd">+</div><p class=itemTotalPrice>$6.00</p></div>
+            </div>
+            -->
+        </div>
+
+        <div id="totalBox">
+            <hr>
+            <div id="totalBoxRow1"><p id="subText">Subotal</p><p id="subTotal">$0.00</p></div>
+            <div id="totalBoxRow2"><p id="totalText">Total</p><p id="cartTotal">$0.00</p></div>
+            <div id="makeOrderButton" onclick="finalizeOrder()">Make Order</div>
+            
+        </div>
+        
+        
+        <script src="scriptCart.js"></script>
+    </body>
+</html>
