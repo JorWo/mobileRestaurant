@@ -1,0 +1,17 @@
+<header>
+    <div id="backArrow">
+        <a onclick="window.history.back()"><img src="images/backArrow.png" width=58.5%></a>
+    </div>
+    <div id="logo">
+        <a href= <%= '/?table='+tableNum %> ><img src="images/logo.jpg" width=288%></img></a>
+    </div>
+    <div id="cart">
+        <a href= <%= '/cart?table='+tableNum %> ><img src="images/cart.png" width=98%></img></a>
+    </div>
+    <nav>
+        <div class="button"><a href= <%= '/beverages?table='+tableNum %> ><img src="images/iconBeverages.png" width=125%></img></a><p id="navB">Beverages</p></div>
+        <div class="button"><a href= <%= '/appetizers?table='+tableNum %> ><img src="images/iconAppetizer.png" width=125%></img></a><p id="navA">Appetizers</p></div>
+        <div class="button"><a href= <%= '/entrees?table='+tableNum %> ><img src="images/iconEntree.png" width=125%></img></a><p id="navE">Entrées</p></div>
+        <div class="button"><a href= <%= '/desserts?table='+tableNum %> ><img src="images/iconDessert.png" width=125%></img></a><p id="navD">Desserts</p></div>
+    </nav>
+</header> 
