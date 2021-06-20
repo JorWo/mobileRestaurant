@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Order = require('./models/order');
-var tables = 10;
 
 //Connect to mongodb database
 mongoose.connect('mongodb+srv://jordini:linguini@cluster0.7lkyv.mongodb.net/Cluster0?retryWrites=true&w=majority', {
@@ -52,8 +51,11 @@ app.post('/api/order', async (req,res) => {
 })
 
 //Load kitchen view and its orders
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
 app.get('/kitchen', async (req,res) =>{
-    Order.find({}, (err,data) => {
+    Order.find({createdAt: {$gte: today}}, (err,data) => {
         if (err) {
             console.log(err);
         }
