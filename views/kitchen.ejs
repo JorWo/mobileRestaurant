@@ -9,13 +9,14 @@
     <body>
         <header>
             <div id="logo">
-                <a href='/'><img id="logo" src="images/logo.jpg" width=150%></img></a>
+                <a href='/'><img id="logo" src="images/logo.jpg" width=170%></img></a>
+                <h1>Kitchen View</h1>
             </div>
-            <h1>Kitchen View</h1>
+            
             <nav>
-                <a href=''>All</a>
-                <a href='#open'>Open</a>
-                <a href='#done'>Done</a>
+                <a href=''><div class='navBut'>All</div></a>
+                <a href='#open'><div class='navBut'>Open</div></a>
+                <a href='#done'><div class='navBut'>Done</div></a>
             </nav>
         </header>
 
@@ -23,26 +24,40 @@
             <% if (tableOrder.length > 0) { %>
                 <%  tableOrder.forEach((order, i) => { %>
                     <div class="ticketBox">
-                        <div class="ticketHead" onclick="completeOrder(<%- i %>)">
-                            <span><p id="tableTitle">Table <%= order.tableNum %></p>
+                        <% var now = new Date(); %>
+                        <% var timeDiff = (now-order.createdAt) %>
+                        <% var seconds = Math.floor(timeDiff/1000 % 60) %>
+                        <% var secondsStr = seconds < 10 ? "0" + seconds : seconds %>
+                        <% var minutes = Math.floor(timeDiff/1000/60 % 60) %>
+                        <% var minutesStr = minutes < 10 ? "0" + minutes : minutes %>
+                        <% var hours = Math.floor(timeDiff/1000/60/60 % 24) %>
+                        <% var hoursStr = hours < 10 ? "0" + hours : hours %>
 
-                            <% var now = new Date(); %>
-                            <% var timeDiff = (now-order.createdAt) %>
-                            <% var seconds = Math.floor(timeDiff/1000 % 60) %>
-                            <% var secondsStr = seconds < 10 ? "0" + seconds : seconds %>
-                            <% var minutes = Math.floor(timeDiff/1000/60 % 60) %>
-                            <% var minutesStr = minutes < 10 ? "0" + minutes : minutes %>
-                            <% var hours = Math.floor(timeDiff/1000/60/60 % 24) %>
-                            <% var hoursStr = hours < 10 ? "0" + hours : hours %>
-
-                            <% if (hoursStr === "00") { %>
-                                <p id="timeElap"><%= minutesStr + ":" + secondsStr %></p>
-                            <% } else { %>
-                                <p id="timeElap"><%= hoursStr + ":" + minutesStr + ":" + secondsStr %></p>
-                            <% } %>
+                        <div onclick="completeOrder(<%- i %>)" class= <%= hoursStr ==="00" && minutes > 20 ? "ticketHead2" : hoursStr === "00" && minutes > 5 ? "ticketHead1" : hoursStr === "00" ? "ticketHead" : "ticketHead2" %> >
+                        
+                            <span>
+                               <div id="table"><img id="tableIcon" src="images/table.png"></img><p id="tableTitle">Table <%= order.tableNum %></p></div>
+                                
+                                <p id="timeIn">
+                                    <% var minutesIn = order.createdAt.getMinutes() < 10 ? "0" + order.createdAt.getMinutes() : order.createdAt.getMinutes() %>
+                                    <% var ampm = order.createdAt.getHours() >= 12 ? "PM" : "AM" %>
+                                    <% var hoursIn = order.createdAt.getHours() > 12 ? order.createdAt.getHours()-12 : order.createdAt.getHours() %>
+                                    <%= hoursIn + ":" + minutesIn+ " "+ ampm %>
+                                </p>
                             </span>
                         </div>
-                        <div id="tableOrder"><%- order.order.replace(/,/g, '<hr>') %></div>
+                        <div id="tableOrder"><%- order.order.replace(/,/g, '<br>') %></div>
+                        <div class="ticketFoot">
+                            <% if (hoursStr === "00" && minutes > 20) { %>
+                                <p id="timeElap" style="color:#f06464"><%= minutesStr + "m " + secondsStr + "s" %></p>
+                            <% } else if (hoursStr === "00" && minutes > 5) { %>
+                                <p id="timeElap" style="color:#f0ac04"><%= hoursStr + "h " + minutesStr + "m " + secondsStr + "s" %></p>
+                            <% } else if (hoursStr === "00") { %>
+                                <p id="timeElap" style="color:#6c718c"><%= minutesStr + "m " + secondsStr + "s" %></p>
+                            <% } else { %>
+                                <p id="timeElap" style="color:#f06464"><%= hoursStr + "h " + minutesStr + "m " + secondsStr + "s" %>
+                            <% } %>
+                        </div>
                     </div>
                 <% }) %>
             <% } %>
