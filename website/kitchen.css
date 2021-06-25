@@ -2,50 +2,199 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    height:100%;
-    display: flex;
+    background-color:#273d4b;
 }
 
 header {
-   display: flex;
-   flex-flow:column;
-   flex-wrap:wrap;
-   align-items:center;
-   width:12%;
+   position: fixed;
+   top:0;
+   width: 100%;
+   height:60px;
+   background-color:white;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+   z-index: 5;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:whitesmoke;
+    border-radius: 5px;
+    width:150px;
+}
+
+.navBut {
+    background-color: whitesmoke;
+    margin-top:1px;
+    width:50px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.navBut:hover {
+    background-color: lightblue;
 }
 
 h1 {
     color: #273d4b;
+    margin-left:120px;
+    margin-top:15px;
 }
 
-#logo {
-   text-align: center;
+#logo {  
+    position:fixed;
+    margin-left:-40px;
+    margin-top: 2px;
+    left:0;
+    z-index:-5;
 }
 
-#tables {
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#tickets {
     display: flex;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap:wrap;
-    background-color:gray;
-    width:100%;
-    flex-grow: 1;
-
+    margin-top:90px;
 }
 
-.tableBox {
-    display:flex;
-    flex-flow: column;
+.ticketBox {
     width:300px;
-    min-height:350px;
+    min-height:400px;
     background-color:white;
     margin:5px;
+    border-radius: 5px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+}
+
+.ticketHead {
+    width:100%;
+    height:50px;
+    background:#6c718c;
+    color: white;
+    content:"";
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+.ticketHead:hover {
+    background:skyblue;
+}
+.ticketHead:hover span{
+    display: none;
+}
+.ticketHead:hover::before {
+    content:'Complete Order';
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ticketHead1 {
+    width:100%;
+    height:50px;
+    background:#f0ac04;
+    color: white;
+    content:"";
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+.ticketHead1:hover {
+    background:skyblue;
+}
+.ticketHead1:hover span{
+    display: none;
+}
+.ticketHead1:hover::before {
+    content:'Complete Order';
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ticketHead2 {
+    width:100%;
+    height:50px;
+    background:#f06464;
+    color: white;
+    content:"";
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+.ticketHead2:hover {
+    background:skyblue;
+}
+.ticketHead2:hover span{
+    display: none;
+}
+.ticketHead2:hover::before {
+    content:'Complete Order';
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ticketFoot {
+    width:100%;
+    height:20px;
+    background: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 0px 0px 5px 5px;
+    position:absolute;
+    bottom: 0;
+    font-weight: bold;
+}
+
+span {
+    width:100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+#table {
+    display: flex;
+    align-items: center;
 }
 
 #tableTitle {
     font-size:20px;
-    font-weight:bold;
-    text-align: center;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#timeElap {
+    color:#6c718c;
+    margin-right: 5px;
+}
+
+#tableOrder {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+    line-height: 200%;
+}
+
+#tableIcon {
+    width: 17%;
+    height: 17%;
+    margin-left: 5px;
+}
+
+#timeIn {
+    font-size: 20px;
+    position: absolute;
+    right:0;
+    margin-right: 5px;
 }
