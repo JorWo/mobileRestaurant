@@ -1,14 +1,13 @@
-var tables = 10;
+async function completeOrder(x) {
+    const result = await fetch('/api/orderUpdate', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+            "id": x,
+        })
+    }).then((res) => res.json());
 
-for (i=0;i<tables;i++) {
-    var objTo1 = document.getElementById("tables");
-    var tableBox = document.createElement("div");
-    tableBox.setAttribute("class","tableBox");
-    objTo1.appendChild(tableBox);
-
-    var objTo2 = document.getElementsByClassName("tableBox")[i];
-    var tableTitle = document.createElement("p");
-    tableTitle.setAttribute("class","tableTitle");
-    objTo2.appendChild(tableTitle);
-    document.getElementsByClassName("tableTitle")[i].innerHTML = "Table " + (i+1);
+    console.log(result);
 }

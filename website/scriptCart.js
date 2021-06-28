@@ -413,14 +413,14 @@ xmlhttp.onreadystatechange = function() {
                     "tableNum": urlParams.get('table'),
                     "order": allCartItems.toString(),
                     "subtotal": "$"+(bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice).toFixed(2),
-                    "total": "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2)
+                    "total": "$"+((bevTotalPrice + apeTotalPrice + entTotalPrice + desTotalPrice)*1.04712).toFixed(2),
+                    "status": "open"
                 })
             }).then((res) => res.json());
 
             console.log(result);
-
-            localStorage.clear();
             //setTimeout(function(){location.href="index.html"},1000);
+            //localStorage.clear();
             }
         } 
     }
