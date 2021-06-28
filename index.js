@@ -7,7 +7,8 @@ const Order = require('./models/order');
 //Connect to mongodb database
 mongoose.connect('mongodb+srv://jordini:linguini@cluster0.7lkyv.mongodb.net/Cluster0?retryWrites=true&w=majority', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 //Set view engine
@@ -38,17 +39,23 @@ app.get('/desserts', (req,res) => {
 app.use(bodyParser.json());
 app.post('/api/order', async (req,res) => {
     console.log(req.body);
-    const {tableNum, order, subtotal, total} = req.body;
+    const {tableNum, order, subtotal, total, status} = req.body;
 
     await Order.create({
         tableNum,
         order, 
         subtotal,
-        total
+        total,
+        status
     });
-
-    res.json({status: 'ok'});
 })
+
+app.post('/api/orderUpdate', async (req,res) => {
+    const {id} = req.body;
+
+    await Order.findOneAndUpdate({_id: id}, {status:'done'});
+})
+
 
 //Load kitchen view and its orders
 const now = new Date();
@@ -60,7 +67,7 @@ app.get('/kitchen', async (req,res) =>{
             console.log(err);
         }
         else {
-            res.render('kitchen', { tableOrder: data });
+            res.render('kitchen', { tableOrder: data, filter: req.query.filter });
         }
     })
 });
